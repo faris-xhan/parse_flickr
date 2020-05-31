@@ -4,14 +4,18 @@ import re
 
 
 class Flickr(Functions):
-    """ Flickr class that will send requests to the flickr and download contents for us """
+    """ Flickr class that will send requests to the flickr and download photos"""
 
     def __init__(self, username):
+        """ Initialize username, get user id and user account informations."""
         self.username = username
         self.user_id = self._parse_user_id()
         self.get_profile()
     
     def get_profile(self):
+        """ Send requests to the flickr and set user account information as 
+        and attributes to the  class """
+
         url = "https://api.flickr.com/services/rest"
         params = {
             "datecreate":1,

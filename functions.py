@@ -6,6 +6,7 @@ import os
 
 class Functions:
     """ Usefull functions that will help me later """
+    
     def send_requests(self, url, params=None):
         """ send_requests(url) -> response object
             send requests to url and return the response object 
@@ -41,12 +42,18 @@ class Functions:
         print(f"{file_name} Downloaded Successfully.")
     
     def get_user_agent(self):
-        """ get_user_agent() -> fake_user_agent """
+        """ get_user_agent() -> fake_user_agent 
+            Get a fake user agent from user_agents.py to send requests"""
         return {
             "User-Agent": random.choice(USER_AGENTS)
         }
     
     def dump_json(self, dict_obj, file_name, location):
+        """ dump_json(dict_obj, file_name, location) -> Create json file of that data 
+            dump_json saves the given data in json format 
+            dict_obj: Dictionary Data to be saved
+            file_name: Name of the file to be saved (.json extension is optional)
+            location: Directory you want to save it in """
         location = self.make_dir(location)
 
         if not file_name.endswith(".json"):
@@ -61,12 +68,17 @@ class Functions:
             exit(1)
     
     def _dict_to_object(self, dict_obj):
-        """ Convert a dictionary to an object of a class """
+        """ _dict_to_object(dict_obj) -> turn dictionary key values pair to attributes 
+            of that class.
+            dict_obj: Dictionary Data """
+
         for key, value in dict_obj.items():
             setattr(self, key, value)
     
     def make_dir(self, location):
-        """ Make sure that the path exists """
+        """ make_dirs(dir_location) -> abslute path if possible
+            make sure that the given directory is valid or not.
+            location: str or path of dir"""
         try:
             if not os.path.exists(location):
                 os.makedirs(location)

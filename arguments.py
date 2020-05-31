@@ -1,3 +1,13 @@
+""" 
+Arguments Settings for the flickr script.
+
+options:
+  -h, --help            show this help message and exit
+  -u USERNAME, --username USERNAME
+                        Username of the flickr account.
+  -s, --save_info       Save the details about photos and user in json
+  
+"""
 import argparse
 import os
 
