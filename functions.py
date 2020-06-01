@@ -24,7 +24,7 @@ class Functions:
             print(str(e))
             exit(1)
             
-        print(f"{url} Request made successfully.")
+        print(f"{r.url} Request made successfully.\n")
         return r
     
     def download_file(self, url, file_name, location):
@@ -33,13 +33,14 @@ class Functions:
             file_name: name of the file 
             location: location to download the file """
         location = self.make_dir(location)
+        print(f"Downloading {file_name}")
         r = self.send_requests(url)
         
         with open(f'{location}/{file_name}', 'wb') as f:
-            for chunk in r.iter_contents(1000):
+            for chunk in r.iter_content(1000):
                 f.write(chunk)
 
-        print(f"{file_name} Downloaded Successfully.")
+        print(f"{file_name} Download successfully.\n")
     
     def get_user_agent(self):
         """ get_user_agent() -> fake_user_agent 
@@ -61,7 +62,7 @@ class Functions:
         try:
             with open(f"{location}/{file_name}", "w") as f:
                 json.dump(dict_obj, f, indent=3)
-            print(f"{file_name} Saved Successfully")
+            print(f"{file_name} Data saved successfully")
         
         except Exception as e:
             print(str(e))

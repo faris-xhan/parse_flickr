@@ -15,4 +15,10 @@ from flickr import Flickr
 if args.username:
     account = Flickr(args.username)
     if args.save_info:
-        account.save_profile()
+        account.save_profile_data()
+    for _ in account.get_posts():
+      pass
+    
+    print("Downloading Complete !!")
+      
+  
